@@ -1,0 +1,56 @@
+{
+  "createTableCloudSpanner": [
+    {
+      "comments": "test_comment",
+      "author": "spanner-liquibase-tests",
+      "description": "sql",
+      "contexts": "test_context",
+      "liquibase": "4.29.2",
+      "labels": "test_label",
+      "filename": "liquibase/harness/compatibility/foundational/changelogs/createTableCloudSpanner.sql",
+      "md5sum": "9:0550fb9ef3a03fe841335b150f2a7fca",
+      "id": "1",
+      "tag": "test_tag",
+      "execType": "EXECUTED"
+    },
+    {
+      "comments": "test_comment",
+      "author": "spanner-liquibase-tests",
+      "description": "createTable tableName=test_table_yaml",
+      "contexts": "test_context",
+      "liquibase": "4.29.2",
+      "labels": "test_label",
+      "filename": "liquibase/harness/compatibility/foundational/changelogs/createTableCloudSpanner.yml",
+      "md5sum": "9:a8e50a8cdc9b2cb1d643000a271d5fed",
+      "id": "1",
+      "tag": "",
+      "execType": "EXECUTED"
+    },
+    {
+      "comments": "test_comment",
+      "author": "spanner-liquibase-tests",
+      "description": "createTable tableName=test_table_json",
+      "contexts": "test_context",
+      "liquibase": "4.29.2",
+      "labels": "test_label",
+      "filename": "liquibase/harness/compatibility/foundational/changelogs/createTableCloudSpanner.json",
+      "md5sum": "9:c1b9ebddffdde4b97ee2771eae75d5ce",
+      "id": "1",
+      "tag": "",
+      "execType": "EXECUTED"
+    },
+    {
+      "comments": "test_comment",
+      "author": "spanner-liquibase-tests",
+      "description": "sql",
+      "contexts": "test_context",
+      "liquibase": "4.29.2",
+      "labels": "test_label",
+      "filename": "liquibase/harness/compatibility/foundational/changelogs/createTableCloudSpanner.xml",
+      "md5sum": "9:728f610c4fe96cbe4f1ddb8603e5b683",
+      "id": "1",
+      "tag": "",
+      "execType": "EXECUTED"
+    }
+  ]
+}

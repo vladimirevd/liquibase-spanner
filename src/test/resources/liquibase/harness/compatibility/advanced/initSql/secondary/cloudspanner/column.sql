@@ -1,0 +1,1 @@
+CREATE TABLE test_table (test_column INT64, secondary_column INT NULL) PRIMARY KEY (test_column);

@@ -4,12 +4,15 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
-    <changeSet id="1" author="spanner-liquibase-tests">
-        <createTable tableName="createTableDataTypeText">
-            <column name="id" type="int">
-                <constraints primaryKey="true" nullable="false"/>
+
+    <changeSet author="spanner-liquibase-tests" id="1">
+        <createTable tableName="test_table">
+            <column name="test_id" type="int">
             </column>
-            <column name="textCol" type="text"/>
+            <column name="test_column" type="STRING">
+            </column>
         </createTable>
+            <dropTable tableName="test_table"/>
+        <rollback/>
     </changeSet>
 </databaseChangeLog>

@@ -1,0 +1,1 @@
+CREATE TABLE test_table_secondary (test_column INT64) PRIMARY KEY (test_column);

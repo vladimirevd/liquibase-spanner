@@ -1,0 +1,10 @@
+# notes:
+# - database names and versions should match with ones provided in harness-config.yml
+# - targetDatabaseVersion and referenceDatabaseVersion parameters could be missed if harness-config.yml has only one DB ->
+# -> with such name or DB doesn't have version as such
+---
+references:
+  - targetDatabaseName: cloudspanner
+    targetDatabaseVersion: 1.0
+
+

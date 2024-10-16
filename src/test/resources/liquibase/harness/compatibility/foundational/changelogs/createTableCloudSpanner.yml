@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      comment: test_comment
+      labels: test_label
+      context: test_context
+      id: 1
+      author: spanner-liquibase-tests
+      changes:
+        - createTable:
+            tableName: test_table_yaml
+            columns:
+              - column:
+                  name: test_column
+                  type: INT
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_test_table_yaml
+      rollback:
+        - sql:
+            sql: DROP TABLE test_table_yaml;

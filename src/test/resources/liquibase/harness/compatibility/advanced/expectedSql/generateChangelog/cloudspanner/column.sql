@@ -1,0 +1,1 @@
+CREATE TABLE test_table (test_column INT64, varcharColumn VARCHAR(25) NULL, intColumn INT DEFAULT NULL NULL, dateColumn date DEFAULT NULL NULL) PRIMARY KEY (test_column)

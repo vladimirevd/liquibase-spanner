@@ -5,11 +5,17 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
     <changeSet id="1" author="spanner-liquibase-tests">
-        <createTable tableName="createTableDataTypeText">
-            <column name="id" type="int">
+        <createTable tableName="test_table" >
+            <column name="test_id" type="INT">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="textCol" type="text"/>
+            <column name="test_FK_column" type="INT">
+                <constraints foreignKeyName="fk_test" referencedTableName="authors"
+                             referencedColumnNames="id" referencedTableCatalogName="testharnesstests"/>
+            </column>
         </createTable>
+        <rollback>
+            <dropTable tableName="test_table"/>
+        </rollback>
     </changeSet>
 </databaseChangeLog>
