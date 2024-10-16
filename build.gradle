@@ -17,9 +17,9 @@
 plugins {
     id "java"
     id "groovy"
-    id "com.google.cloud.tools.jib" version "2.8.0"
-    id "com.github.johnrengelman.shadow" version "6.1.0"
-    id "com.github.harbby.gradle.serviceloader" version "1.1.2"
+    id "com.google.cloud.tools.jib" version "3.4.3"
+    id "com.github.johnrengelman.shadow" version "8.1.1"
+    id "com.github.harbby.gradle.serviceloader" version "1.1.8"
 }
 
 
@@ -29,13 +29,14 @@ group = "com.google.cloudspannerecosystem"
 if (project.hasProperty('tagVersion') && project.tagVersion.trim()) {
     project.version = project.tagVersion.trim()
 } else {
-   project.version = "SNAPSHOT"
+    project.version = "SNAPSHOT"
 }
 
 
 repositories {
     mavenCentral()
     jcenter()
+    mavenLocal()
 }
 
 
@@ -44,13 +45,22 @@ java {
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 
+tasks.withType(Test) {
+    javaLauncher = javaToolchains.launcherFor {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+    java {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+}
 // Liquibase <4 uses Liquibase-Package to determine what to scan
 jar {
-  manifest {
-    attributes(
-      "Liquibase-Package": "liquibase.ext.spanner"
-    )
-  }
+    manifest {
+        attributes(
+                "Liquibase-Package": "liquibase.ext.spanner"
+        )
+    }
 }
 
 // Liquibase 4 uses ServiceLoader
@@ -94,20 +104,22 @@ dependencies {
     testImplementation("com.google.truth:truth:1.4.4") {
         exclude group: 'com.google.guava', module: 'guava'
     }
-    testImplementation("org.mockito:mockito-core:1.10.19")
+    testImplementation("org.mockito:mockito-core:5.14.1")
 
     // For using the Liquibase test harness
     testImplementation 'junit:junit:4.13.2'
-    testImplementation 'org.liquibase:liquibase-test-harness:1.0.0'
-    testImplementation('org.codehaus.groovy:groovy-all:2.5.23') {
+    testImplementation('org.liquibase:liquibase-test-harness:1.1.0-SNAPSHOT') {
+//        exclude group: 'org.firebirdsql.jdbc', module: 'jaybird'
+    }
+    testImplementation('org.apache.groovy:groovy-all:4.0.23') {
         exclude module: 'org.codehaus.groovy:groovy-testng'
         exclude module: 'org.codehaus.groovy:groovy-swing'
     }
-    testImplementation 'org.spockframework:spock-core:1.3-groovy-2.5'
+    testImplementation 'org.spockframework:spock-core:2.3-groovy-4.0'
 
     // For testing runtime
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.11.0")
-    
+
     // For Spanner mock server testing
     testImplementation(group: 'com.google.cloud', name: 'google-cloud-spanner', classifier: 'tests')
     testImplementation(group: 'com.google.api', name: 'gax-grpc', version: '2.53.0', classifier: 'testlib')
@@ -120,12 +132,12 @@ dependencies {
 // Run unit tests (Spanner emulator and mock tests)
 test {
 
-  // serviceLoaderBuild is necessary for Liquibase to find the extensions
-  dependsOn "serviceLoaderBuild"
+    // serviceLoaderBuild is necessary for Liquibase to find the extensions
+    dependsOn "serviceLoaderBuild"
 
-  useJUnitPlatform {
-    excludeTags "integration"
-  }
+    useJUnitPlatform {
+        excludeTags "integration"
+    }
 }
 
 task liquibaseHarnessTest(type: Test) {
@@ -144,14 +156,14 @@ task liquibaseHarnessTest(type: Test) {
 // Also requires GOOGLE_APPLICATION_CREDENTIALS environment variable
 // if using a JSON key for authentication.
 task integrationTest(type: Test) {
-  shouldRunAfter "test"
+    shouldRunAfter "test"
 
-  // serviceLoaderBuild is necessary for Liquibase to find the extensions
-  dependsOn "serviceLoaderBuild"
+    // serviceLoaderBuild is necessary for Liquibase to find the extensions
+    dependsOn "serviceLoaderBuild"
 
-  useJUnitPlatform {
-    includeTags "integration"
-  }
+    useJUnitPlatform {
+        includeTags "integration"
+    }
 }
 
 build {
@@ -170,7 +182,7 @@ shadowJar {
     mergeServiceFiles()
     dependencies {
         exclude([
-          dependency("org.liquibase:liquibase-core")
+                dependency("org.liquibase:liquibase-core")
         ])
     }
 }
