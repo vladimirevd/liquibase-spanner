@@ -16,7 +16,7 @@
     </changeSet>
     <changeSet id="2" author="spanner-liquibase-tests">
         <createView viewName="test_view">
-            select test_column from view_table
+            SELECT view_table.test_column FROM view_table
         </createView>
         <rollback>
             <dropView viewName="test_view"/>

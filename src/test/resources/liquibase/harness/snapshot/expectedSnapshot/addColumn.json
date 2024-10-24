@@ -12,7 +12,7 @@
         {
           "column": {
             "name": "test_column",
-            "nullable": true,
+            "nullable": false,
             "type": {
               "typeName": "INT64"
             }
@@ -23,7 +23,7 @@
             "name": "varcharColumn",
             "nullable": true,
             "type": {
-              "typeName": "STRING"
+              "typeName": "STRING(255)"
             }
           }
         },

@@ -14,7 +14,7 @@
     </changeSet>
     <changeSet id="2" author="spanner-liquibase-tests">
         <addColumn tableName="test_table">
-            <column name="varcharColumn" type="varchar(25)" value="INITIAL_VALUE"/>
+            <column name="varcharColumn" type="varchar(255)" value="INITIAL_VALUE"/>
             <column name="intColumn" type="int" valueNumeric="5"/>
             <column name="dateColumn" type="date" valueDate="2020-09-21"/>
         </addColumn>

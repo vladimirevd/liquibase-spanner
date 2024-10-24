@@ -15,14 +15,6 @@
         </rollback>
     </changeSet>
     <changeSet id="2" author="spanner-liquibase-tests">
-        <addPrimaryKey
-                columnNames="id"
-                constraintName="test_pk"
-                tableName="test_table"
-                validate="true"/>
-        <rollback>
-            <dropPrimaryKey tableName="test_table"
-                            constraintName="test_pk"/>
-        </rollback>
+        <!-- NOT SUPPORTED BY CLOUDSPANNER-->
     </changeSet>
 </databaseChangeLog>

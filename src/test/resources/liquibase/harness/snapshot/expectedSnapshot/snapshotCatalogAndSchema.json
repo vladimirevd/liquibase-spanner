@@ -1,17 +1,10 @@
 {
   "snapshot": {
     "objects": {
-      "liquibase.structure.core.Catalog": [
-        {
-          "catalog": {
-            "name": "testharnesstests"
-          }
-        }
-      ],
       "liquibase.structure.core.Schema": [
         {
           "schema": {
-            "name": "harness_test_ds"
+            "default": true
           }
         }
       ]

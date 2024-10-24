@@ -164,10 +164,8 @@ public class CloudSpanner extends AbstractJdbcDatabase implements ICloudSpanner 
     return false;
   }
 
-  @Override
-  public boolean supportsCatalogs() {
-    return false;
-  }
+//  @Override
+//  public boolean supportsCatalogs() { return false; }
 
   @Override
   public boolean isCaseSensitive() {

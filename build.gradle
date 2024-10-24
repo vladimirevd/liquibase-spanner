@@ -132,7 +132,12 @@ dependencies {
 
 // Run unit tests (Spanner emulator and mock tests)
 test {
-
+    // Enable more detailed logging in Gradle test reports
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+        exceptionFormat "full"
+        showStandardStreams = true
+    }
     // serviceLoaderBuild is necessary for Liquibase to find the extensions
     dependsOn "serviceLoaderBuild"
 
