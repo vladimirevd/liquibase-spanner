@@ -120,7 +120,6 @@ dependencies {
 
 // Run unit tests (Spanner emulator and mock tests)
 test {
-
   // serviceLoaderBuild is necessary for Liquibase to find the extensions
   dependsOn "serviceLoaderBuild"
 
